@@ -9,17 +9,42 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    //Properties
+    var maxTaps = 0
+    var currentTaps = 0
+    
+    
+    //Outlets
+    @IBOutlet weak var logoImage: UIImageView!
+    
+    @IBOutlet weak var howManyTapsTxt: UITextField!
+    
+    @IBOutlet weak var playButton: UIButton!
+    
+    @IBOutlet weak var tapButton: UIButton!
+    
+    @IBOutlet weak var tapLabel: UILabel!
+    
+    @IBAction func onPlayClick(sender: UIButton!){
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        if howManyTapsTxt.text != nil && howManyTapsTxt.text != "" {
+            
+            
+            logoImage.hidden = true;
+            howManyTapsTxt.hidden = true;
+            playButton.hidden = true;
+            
+            tapButton.hidden = false;
+            tapLabel.hidden = false;
+            
+            maxTaps = Int(howManyTapsTxt.text!)!
+            currentTaps = 0
+            
+            tapLabel.text = "\(currentTaps) Taps"
+        }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
+    
 }
 

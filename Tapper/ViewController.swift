@@ -76,7 +76,7 @@ class ViewController: UIViewController {
     
     func isGameOver() -> Bool {
         
-        if currentTaps >= maxTaps{
+        if currentTaps > maxTaps{
             return true
         }
         else{

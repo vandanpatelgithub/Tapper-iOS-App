@@ -26,6 +26,19 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var tapLabel: UILabel!
     
+    @IBAction func onCoinTap(sender: UIButton!){
+        
+        currentTaps += 1;
+        
+        updatetapLabel();
+        
+        if isGameOver(){
+            restartGame()
+        }
+        
+        
+    }
+    
     @IBAction func onPlayClick(sender: UIButton!){
 
         
@@ -42,8 +55,37 @@ class ViewController: UIViewController {
             maxTaps = Int(howManyTapsTxt.text!)!
             currentTaps = 0
             
-            tapLabel.text = "\(currentTaps) Taps"
+            updatetapLabel()
+          
         }
+    }
+    
+    func restartGame() {
+        
+        maxTaps = 0
+        
+        howManyTapsTxt.text = ""
+        
+        logoImage.hidden = false
+        howManyTapsTxt.hidden = false
+        playButton.hidden = false
+        
+        tapButton.hidden = true;
+        tapLabel.hidden = true;
+    }
+    
+    func isGameOver() -> Bool {
+        
+        if currentTaps >= maxTaps{
+            return true
+        }
+        else{
+            return false
+        }
+    }
+    
+    func updatetapLabel() {
+          tapLabel.text = "\(currentTaps) Taps"
     }
     
 }
